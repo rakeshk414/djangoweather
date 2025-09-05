@@ -1,3 +1,4 @@
+# Here is the views file
 from django.shortcuts import render
 # import
 
