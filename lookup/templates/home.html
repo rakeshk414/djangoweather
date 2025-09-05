@@ -2,6 +2,35 @@
 
 <{% block content %}
 
-<h1> Hello World </h1>
+<br/>
 
+{% if api %}
+	{% if api == "Error..." %}
+		There was an error, please try again
+	{% else %}
+
+<div class="jumbotron {{ category_color }}">
+	<h3 class="display-4">{{ api.2.Category.Name}} </h3>
+	<p class="lead">Current {{ api.2.ReportingArea }} Air 
+	Quality: {{ api.5.AQI }} </p> 
+
+	{% if api.2.Category.Name == "Good" %}
+		<p> (0-50) Air quality is good </p>
+
+	{% elif api.2.Category.Name == "Moderate" %}
+		<p> (51-100) Air quality is acceptable </p>
+	{% elif api.2.Category.Name == "USG" %}
+		<p> (101-150) Although general public is not likely </p>
+	{% elif api.2.Category.Name == "Unhealth" %}
+		<p> (151-200) Everyone may begin to experience health errects </p>
+	{% elif api.2.Category.Name == "Very Unhealty" %}
+		<p> (201-300) health alert everyone may experience </p>
+	{% elif api.2.Category.Name == "Hazardous" %}
+		<p> (301-500) Health warnings of emergency </p>
+	
+
+	{% endif %}
+</div>
+{% endif %}	
+{% endif %}
 {% endblock %}
